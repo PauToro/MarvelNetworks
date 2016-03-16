@@ -15,6 +15,7 @@
 * Images of two characters
 * Years created and first year of meeting
 * Link to individual networks
+
 ####Individual’s network
 * Top 5 “Friends”
 * Links to two character meeting screen
