@@ -35,8 +35,13 @@ def scrapIssue(issueURL):
 					year = find_between(lineYear, ">", "<")
 		return year
 	except HTTPError:
-		return "No file found."
+		return "No record found."
 
+#For sorting issue tuples
+def getKey(item):
+	return item[1]
+
+	
 char1 = raw_input("Character 1: ")
 char2 = raw_input("Character 2: ")
 
@@ -53,9 +58,16 @@ for row in cursor:
 	issueURL = issueURL.replace(" ", "_")
 	issueURL = issueURL.title()
 	issueURL = "http://marvel.wikia.com/wiki/" + issueURL
-	issueYear = scrapIssue(issueURL)
-	issueTuple = (issue, issueYear)
-	print issue
-	print issueYear
-	
+	issueYear = (scrapIssue(issueURL))
+	if issueYear != "No record found.":
+		issueYear = int(issueYear)
+		issueTuple = (issue, issueYear)
+		issues.append(issueTuple)
+
 conn.close()
+
+sortedIssues = sorted(issues, key=getKey)
+	
+for issue in sortedIssues:
+	print issue[0] + "\t" + str(issue[1])
+	
