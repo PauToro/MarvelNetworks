@@ -3,7 +3,7 @@
 #Draw graph and highlight location of particular node (character)
 
 import networkx as nx
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 G = nx.read_edgelist('networkMatch.csv', delimiter=';')
 
@@ -21,7 +21,7 @@ for name, bc in bet_cen.iteritems():
 	if name == character:
 		print "Closeness Centrality: " + str(bc)
 		
-#nx.draw(G)
+nx.draw(G)
 #plt.savefig("test.png")
 				
 #cent_items = [(b,a) for (a,b) in close_cen.iteritems()]

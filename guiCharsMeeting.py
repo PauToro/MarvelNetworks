@@ -136,7 +136,7 @@ for row in cursor:
 	issueYear = (scrapIssue(issueURL))
 	if issueYear != "No record found.":
 		issueYear = int(issueYear)
-		issueTuple = (issue, issueYear)
+		issueTuple = (issue.title(), issueYear)
 		issues.append(issueTuple)
 
 conn.close()
@@ -170,13 +170,13 @@ leftCharImage.pack(fill=BOTH)
 
 leftNameLabel = tk.Label(leftFrame, text=name1Text, anchor=W, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
 leftAliasLabel = tk.Label(leftFrame, text=alias1Text, anchor=W, justify=LEFT, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
-leftFaLabel = tk.Label(leftFrame, text=fa1Text, anchor=W, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
+leftFaLabel = tk.Label(leftFrame, text=fa1Text, anchor=W, justify=LEFT, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
 
 leftNameLabel.pack(fill=BOTH)
 leftAliasLabel.pack(fill=BOTH)
 leftFaLabel.pack(fill=BOTH)
 
-#Left frame is first character's image and information
+#Right frame is second character's image and information
 charImage2 = createMainImage(imageURL2)
 
 rightTitle = tk.Label(rightFrame, text=charName2, anchor=N, wraplength = wbox, font = ('Helvetica', 24), padx=5, pady=5)
@@ -187,10 +187,27 @@ rightCharImage.pack(fill=BOTH)
 
 rightNameLabel = tk.Label(rightFrame, text=name2Text, anchor=W, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
 rightAliasLabel = tk.Label(rightFrame, text=alias2Text, anchor=W, justify=LEFT, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
-rightFaLabel = tk.Label(rightFrame, text=fa2Text, anchor=W, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
+rightFaLabel = tk.Label(rightFrame, text=fa2Text, anchor=W, justify=LEFT, wraplength = wbox, font = ('Helvetica', 16), padx=5, pady=2)
 
 rightNameLabel.pack(fill=BOTH)
 rightAliasLabel.pack(fill=BOTH)
 rightFaLabel.pack(fill=BOTH)
+
+#Center frame holds common appearances
+issuesScroll = Scrollbar(centerFrame)
+issuesText = Text(centerFrame, height=10, width=60)
+#height in lines, width in characters
+
+
+issuesText.insert(END, "Common Appearances: \n")
+
+for issue in sortedIssues:
+	currentLine = '{0:<40}\t{1:4}'.format(issue[0], issue[1])
+	issuesText.insert(END, currentLine + "\n")
+	
+issuesScroll.pack(side=RIGHT, fill=Y)
+issuesText.pack(side=LEFT, fill=Y)
+issuesScroll.config(command=issuesText.yview)
+issuesText.config(yscrollcommand=issuesScroll.set, state=DISABLED)
 
 win.mainloop()

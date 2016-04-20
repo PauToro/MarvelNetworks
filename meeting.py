@@ -69,5 +69,6 @@ conn.close()
 sortedIssues = sorted(issues, key=getKey)
 	
 for issue in sortedIssues:
-	print issue[0] + "\t" + str(issue[1])
+	currentLine = '{0:<30}\t{1:4}'.format(issue[0], issue[1])
+	print currentLine
 	
