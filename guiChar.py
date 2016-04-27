@@ -60,6 +60,17 @@ def createMainImage(url):
 	pil_image_resized = resize(originalWidth, originalHeight, wbox, hbox, pil_image)
 	readyImage = ImageTk.PhotoImage(pil_image_resized)
 	return readyImage
+	
+def createEncounterImage(url):
+	wbox = 75
+	hbox = 75
+	image_bytes = urlopen(url).read()
+	data_stream = io.BytesIO(image_bytes)
+	pil_image = Image.open(data_stream)
+	originalWidth, originalHeight = pil_image.size
+	pil_image_resized = resize(originalWidth, originalHeight, wbox, hbox, pil_image)
+	readyImage = ImageTk.PhotoImage(pil_image_resized)
+	return readyImage
 
 public_key = "b94a41b2612dd7f86517f823b4319417"
 private_key = "8512a4a913969be34e3574573036c8648a8aa26b"

@@ -2,14 +2,15 @@ from Tkinter import *
 from PIL import Image, ImageTk
 import Tkinter as tk
 import sqlite3
-
-
+from autocomplete import *
 	
 def char1Display():
 	prompt1 = Label(char1Frame, text="Character name:")
 	prompt1.pack()
-	singleCharEntry = Entry(char1Frame, bd=5)
+	singleCharEntry = AutocompleteEntry(char1Frame, bd=5)
+	singleCharEntry.set_completion_list(charNamesList)
 	singleCharEntry.pack()
+	singleCharEntry.focus_set()
 	
 	subtmitSingle = Button(char1Frame, text="Enter", command=getSingleChar)
 
@@ -33,6 +34,17 @@ def getDoubleChar():
 graphicHeight = 255
 graphicWidth = 400
 
+#Get character names for autocomplete entry
+conn = sqlite3.connect('databases/MarvelNetworks')
+cursor = conn.execute("SELECT APIname FROM nameMatch;")
+charNamesList = []
+for row in cursor:
+	name = row[0]
+	charNamesList.append(name)
+
+print charNamesList[100]
+
+conn.close()
 
 win = tk.Tk()
 win.configure(background="red4")
