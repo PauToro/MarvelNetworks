@@ -39,7 +39,7 @@ class AutocompleteEntry(Tkinter.Entry):
 		# collect hits
 		_hits = []
 		for element in self._completion_list:
-			if element.startswith(self.get().lower()):
+			if element.startswith(self.get()):
 				_hits.append(element)
 		# if we have a new hit list, keep this in mind
 		if _hits != self._hits:
@@ -76,18 +76,19 @@ class AutocompleteEntry(Tkinter.Entry):
 			self.autocomplete()
 			
 #Get character names for autocomplete entry
-conn = sqlite3.connect('databases/MarvelNetworks')
-cursor = conn.execute("SELECT APIname FROM nameMatch;")
-charNamesList = []
-for row in cursor:
-	name = row[0]
-	name = name.title()
-	charNamesList.append(name)
-conn.close()
+#conn = sqlite3.connect('databases/MarvelNetworks')
+#cursor = conn.execute("SELECT APIname FROM nameMatch;")
 
-#Run a mini application to test the AutocompleteEntry Widget.#
-root = Tkinter.Tk(className=' AutocompleteEntry demo')
-entry = AutocompleteEntry(root)
-entry.set_completion_list(charNamesList)
-entry.pack()
-root.mainloop()
+#charNamesList = []
+#for row in cursor:
+#	name = row[0].encode(encoding='UTF-8')
+#	name = name.title()
+#	charNamesList.append(name)
+#conn.close()
+
+#Run a mini application to test the AutocompleteEntry Widget.
+#root = Tkinter.Tk(className=' AutocompleteEntry demo')
+#entry = AutocompleteEntry(root)
+#entry.set_completion_list(charNamesList)
+#entry.pack()
+#root.mainloop()

@@ -15,7 +15,7 @@ def find_between( aString, first, last):
 		return ""
  
 def scrapWiki(wikiURL):
-	soup = BeautifulSoup(urlopen(wikiURL))
+	soup = BeautifulSoup(urlopen(wikiURL), "html.parser")
 	lines = soup.find_all('p')
 	list = []
 	for line in lines:
