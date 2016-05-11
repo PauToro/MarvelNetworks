@@ -107,8 +107,6 @@ class singleChar(object):
 			self.encounterImageURLs.append(imgURL)
 		conn.close()	
 	
-
-
 	def analyzeNetwork(self):
 		G = nx.read_edgelist('networkMatch.csv', delimiter=';')
 		character = self.name.upper()		
@@ -124,9 +122,10 @@ class singleChar(object):
 				bc = '{0:.3f}'.format(bc)
 				self.between_centralityText = "Betweenness centrality: " + str(bc)
 		
-SW = singleChar("Scarlet Witch")
+SW = singleChar("Banshee")
 SW.getID()
 SW.getDataAPI()
 SW.getMainImageURL()
+print SW.nameText
 SW.findTopEncounters()
 SW.analyzeNetwork()
