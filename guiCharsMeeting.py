@@ -134,7 +134,7 @@ for row in cursor:
 	issueURL = issueURL.title()
 	issueURL = "http://marvel.wikia.com/wiki/" + issueURL
 	issueYear = (scrapIssue(issueURL))
-	if issueYear != "No record found.":
+	if issueYear != "No record found." or issueYear is not None:
 		issueYear = int(issueYear)
 		issueTuple = (issue.title(), issueYear)
 		issues.append(issueTuple)
