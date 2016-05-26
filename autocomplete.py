@@ -5,6 +5,8 @@
 #Created by Mitja Martini on 2008-11-29.
 #http://tkinter.unpythonic.net/wiki/AutocompleteEntry
 
+#Modified for Marvelist
+
 # encoding: utf-8
 
 import sys
@@ -74,21 +76,3 @@ class AutocompleteEntry(Tkinter.Entry):
 		# perform normal autocomplete if event is a single key or an umlaut
 		if len(event.keysym) == 1 or event.keysym in tkinter_umlauts:
 			self.autocomplete()
-			
-#Get character names for autocomplete entry
-#conn = sqlite3.connect('databases/MarvelNetworks')
-#cursor = conn.execute("SELECT APIname FROM nameMatch;")
-
-#charNamesList = []
-#for row in cursor:
-#	name = row[0].encode(encoding='UTF-8')
-#	name = name.title()
-#	charNamesList.append(name)
-#conn.close()
-
-#Run a mini application to test the AutocompleteEntry Widget.
-#root = Tkinter.Tk(className=' AutocompleteEntry demo')
-#entry = AutocompleteEntry(root)
-#entry.set_completion_list(charNamesList)
-#entry.pack()
-#root.mainloop()

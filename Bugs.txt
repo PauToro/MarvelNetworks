@@ -1,0 +1,28 @@
+Known Bugs and Issues
+
+No Social Network Statistics
+J. JONAH JAMESON
+SHARON CARTER
+GWEN STACY
+
+IndexError: list index out of range
+MORLUN
+COLOSSUS
+SILVER FOX
+
+UnboundLocalError: local variable 'realNameLine' referenced before assignment
+MORLUM
+
+HTTPError: HTTP Error 404: Not Found
+KAREN PAGE
+ROUGHHOUSE
+FERAL
+
+AttributeError: 'NoneType' object has no attribute 'timeout'
+JESSICA DREW
+TYGER TIGER
+BOOMER
+
+Notable Characters Not Matched
+Jean Grey
+Dr. Strange
